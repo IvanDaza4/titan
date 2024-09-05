@@ -1,43 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensaje de Amor</title>
+    <style>
+        /* Estilos generales del cuerpo */
+        body {
+            font-family:'Times New Roman', Times, serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: blueviolet;
+        }
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+        /* Contenedor principal */
+        .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        /* Estilo del botón */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 0.5px solid black;
+            border-radius: 5px;
+            background-color: fuchsia;
+            color: white;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+        button:hover {
+            background-color: darkviolet;
+        }
+
+        /* Estilo del oso */
+        .oso {
+            width: 80%; /* Ajustado para dispositivos móviles */
+            max-width: 150px;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        /* Estilos para el overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Asegura que el overlay esté por encima del contenido */
+        }
+
+        /* Contenido del overlay */
+        .overlay-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%; /* Ajustado para dispositivos móviles */
+            max-width: 300px;
+        }
+
+        .overlay-content p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .overlay-content h4 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .overlay-content img {
+            height: 70px; /* Ajustado para una visualización adecuada */
+            margin: 20px 0;
+        }
+
+        #closeMessageButton {
+            margin-top: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #closeMessageButton:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hola mi amor</h1>
+        <img src="https://png.pngtree.com/png-clipart/20230106/original/pngtree-bear-pink-png-image_8876465.png" alt="Oso" class="oso">
+        <button id="showMessageButton">Clickea Si Me Amas</button>
+    </div>
+    <div id="messageOverlay" class="overlay">
+        <div class="overlay-content">
+            <p>Yo también Te amo</p>
+            <h4>JIJIJIJI</h4>
+            <img src="https://pngimg.com/uploads/heart/heart_PNG51130.png" alt="Corazón">
+            <button id="closeMessageButton">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const showMessageButton = document.getElementById('showMessageButton');
+            const messageOverlay = document.getElementById('messageOverlay');
+            const closeMessageButton = document.getElementById('closeMessageButton');
+        
+            showMessageButton.addEventListener('click', () => {
+                messageOverlay.style.display = 'flex';
+            });
+        
+            closeMessageButton.addEventListener('click', () => {
+                messageOverlay.style.display = 'none';
+            });
+        });
+    </script>
+</body>
 </html>
